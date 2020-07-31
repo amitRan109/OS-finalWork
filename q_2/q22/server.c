@@ -22,5 +22,5 @@ int main (){
    signal(SIGINT, handler);
    signal(SIGUSR1, handler);
    while (1);
-   return 0;
+   exit(EXIT_SUCCESS);
 }

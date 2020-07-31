@@ -2,15 +2,22 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sched.h>
-#include <errno.h>
+#include <errno.h> 
 
-int set (int pid, int priority, int policy) {
-    struct sched_param sp = { .sched_priority = priority };
-    int ret = sched_setscheduler(pid, policy, &sp);
-    // if (ret == -1) {
-    //     perror("sched_setscheduler");
+
+int main(int argc, char *argv[]) {
+    // if (argc < 3) {
+    //     printf("no enough param\n");
     //     exit (EXIT_FAILURE);
     // }
+    // pid_t pid = atoi(argv[3]);
+    // if (pid == 0) pid = getppid();
+
+    // int priority = atoi(argv[2]);
+
+    struct sched_param sp = { .sched_priority = 50 };
+    int ret = sched_setscheduler(4423,SCHED_RR, &sp);
+
     switch (errno)
     {
     case EINVAL:
@@ -22,19 +29,11 @@ int set (int pid, int priority, int policy) {
     default:
         printf("OK\n");
     }
-}
 
-int main(int argc, char *argv[]) {
-    printf("%d\n", getppid());
-    if (argc < 3) {
-        printf("no enough param\n");
-        exit (EXIT_FAILURE);
-    }
-
-    int policy = atoi(argv[1]);
-    int priority = atoi(argv[2]);
-
-    set (0, priority, policy);
+    // if (ret == -1) {
+    //     perror("sched_setscheduler");
+    //     exit (EXIT_FAILURE);
+    // }
     
     exit(EXIT_SUCCESS);
  }

@@ -1,2 +1,2 @@
-check: check_pid.c
-	gcc -o check check_pid.c
+check_pid: check_pid.c
+	gcc -o check_pid check_pid.c

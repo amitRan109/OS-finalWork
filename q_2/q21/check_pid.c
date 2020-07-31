@@ -8,13 +8,13 @@ void _kill (pid_t pid) {
     kill(pid,0);
     switch(errno) {
         case 0: 
-            printf("Process %d exists\n",pid);
+            printf("Process %d exists.\n",pid);
             break;
         case ESRCH: 
-            printf("process %d does not exists\n",pid); 
+            printf("Process %d does not exists.\n",pid); 
             break;
         case EPERM: 
-            printf("process %d exists but we have no permission\n",pid);
+            printf("Process %d exists but we have no permission.\n",pid);
             break;
     }
 }
@@ -28,5 +28,5 @@ int main (int argc, char* argv[]){
         _kill(pid);
     }
     
-    return 0;
+    exit(EXIT_SUCCESS);
 }

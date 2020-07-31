@@ -36,5 +36,5 @@ int main (int argc, char* argv[]){
         int count = atoi(argv[3]);
         send_msg (serv_pid, sig_type, count);
     }
-    return 0;
+    exit(EXIT_SUCCESS);
 }
