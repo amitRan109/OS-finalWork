@@ -1,9 +1,6 @@
-כדי להריץ את  התוכנית יש לעשות את הצעדים הבאים:
-0. לוודא שיש בתיקייה אחת את כל הקבצים הדרושים
-1. לפתוח טרמינל חדש
-2. להריץ את הפקודה
-make 
-3. להריץ את הפקודה עם מספר התהליך אותו רוצים לבדוק
-./check_pid <process_id>
-לדוגמא
-./check_pid 2345
+To run the program follow the steps:
+0. download the files
+1. open new terminal
+2. run the command: make
+3. run the command: ./check_pid <process_id> with the number of process we would like to check.
+for example: ./check_pid 2345
