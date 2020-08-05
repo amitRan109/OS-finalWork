@@ -1,18 +1,10 @@
-כדי להריץ את  התוכנית יש לעשות את הצעדים הבאים:
-0. לוודא שיש בתיקייה אחת את כל הקבצים הדרושים
-1. לפתוח שני טרמינל חדשים
-2. בטרמינל הראשון להריץ את הפקודה
-make 
-ואז להריץ את הפקודה
-./server
-נקבל פלט שהוא מספר התהליך של server
-3. נפתח את הטרמינל השני ונריץ בו את הפקודה
-./client <pid> <type> <count>
-כאשר:
-pid-מספר התהליך את הserver 
-נקבל את המספר בפלט של הטרמינל הראשון
-type- סוג הסיגנל אותו נרצה לשלוח
-count- מספר הפעמים שנרצה לשלוח את אותו סיגנל
-לדוגמא
-./client 2345 2 1000
-4. ניתן לחזור על סעיף 3 מספר פעמים
+To run the program follow the steps:
+0. download the files
+1. open new 2 terminals
+2. in the first terminal run the command: make
+  and then the command: ./server
+  we will get a output that is the pid of server.
+3. in the second terminal run the command: ./client <server_pid> <sig_type> <sig_count>
+  when server_pid is the pid of server that we got in the first terminal, sig_type is the type of signal that can be send, 
+  and sig_count is the number of times we want to send the signal.
+for example: ./client 2345 2 1000
