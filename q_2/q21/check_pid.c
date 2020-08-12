@@ -4,9 +4,9 @@
 #include <errno.h> 
 #include <string.h>
 
-void _kill (pid_t pid) {
-    kill(pid,0);
-    switch(errno) {
+void _kill (pid_t pid) { //check if the pid exists
+    kill(pid,0); //send a signal to the process
+    switch(errno) { 
         case 0: 
             printf("Process %d exists.\n",pid);
             break;
@@ -20,8 +20,8 @@ void _kill (pid_t pid) {
 }
 
 int main (int argc, char* argv[]){
-    if (argc < 2) {
-        printf ("error: enter number\n");
+    if (argc < 2) { //check if we got a pid
+        printf ("error: not enough arguments\n");
     }
     else {
         pid_t pid = atoi(argv[1]);

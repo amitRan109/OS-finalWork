@@ -7,18 +7,17 @@
 #include<signal.h>
 
 void send_msg (pid_t pid, int sig_type , int count){
-    int reg;
     switch (sig_type)
     {
     case 2:
         for (int i=0; i < count; i++){
-            reg = kill (pid, SIGINT);
+            kill (pid, SIGINT);
             sleep(0.1);
         }
         break;
     case 10:
         for (int i=0; i < count; i++){
-            reg = kill (pid, SIGUSR1);
+            kill (pid, SIGUSR1);
         }
         break;
     default:
