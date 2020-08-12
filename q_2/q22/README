@@ -3,7 +3,7 @@ To run the program follow the steps:
 1. open new 2 terminals
 2. in the first terminal run the command: make
   and then the command: ./server
-  we will get a output that is the pid of server.
+  the output is the pid of server.
 3. in the second terminal run the command: ./client <server_pid> <sig_type> <sig_count>
   when server_pid is the pid of server that we got in the first terminal, sig_type is the type of signal that can be send, 
   and sig_count is the number of times we want to send the signal.
