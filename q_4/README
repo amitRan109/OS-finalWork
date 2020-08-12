@@ -3,4 +3,5 @@ To run the program follow the steps:
 1. open new terminal
 2. run the command: make
 3. run the command: ./dir_traversal <dir_name>
+  when dir_name is the name of the directory.
 for example: ./dir_traversal dir
