@@ -6,21 +6,24 @@
 #include <stdint.h>
 
 static int display_info(const char *fpath, 
-const struct stat *sb, int tflag, struct FTW *ftwbuf) {
-    if ( tflag == FTW_SL || tflag == FTW_SLN ) return 0;
-     printf("%-3s %jd %s\n",
-        (tflag == FTW_D) ? "D" : (tflag == FTW_DNR) ? "D" :
-        (tflag == FTW_DP) ? "D" : (tflag == FTW_F) ? "F" : 
-        (tflag == FTW_SL) ? "SL" : (tflag == FTW_SLN) ? "SL" : "???",
-        (ino_t) sb->st_ino, 
-        fpath + ftwbuf->base);
+const struct stat *sb, int tflag, struct FTW *ftwbuf) { //prints the details of the current folder
     
-    return 0;           /* To tell nftw() to continue */
+    lstat(fpath, (struct stat* restrict)sb);
+
+    if ((sb->st_mode & S_IFMT) != S_IFLNK) { // check if it's a soft link
+        printf("%-1s %jd %s\n",
+        (tflag == FTW_D) ? "D" : (tflag == FTW_DNR) ? "D" :
+        (tflag == FTW_DP) ? "D" : (tflag == FTW_F) ? "F" : "???",
+        (ino_t) sb->st_ino, 
+        fpath + ftwbuf->base);                      
+    }
+    
+    return 0; 
 }
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        printf("error\n");
+        printf("error: not enough arguments\n");
         exit (1);
     }
 
