@@ -2,5 +2,6 @@ To run the program follow the steps:
 0. download the files
 1. open new terminal
 2. run the command: make
-3. run the command: ./check_pid <process_id> with the number of process we would like to check.
+3. run the command: ./check_pid <process_id> 
+  when process_id is the  number of process we would like to check.
 for example: ./check_pid 2345
