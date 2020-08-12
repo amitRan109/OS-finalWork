@@ -1,40 +1,38 @@
+#include <sched.h>
+#include <sys/types.h>
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <sched.h>
-#include <errno.h>
 
-int set (int pid, int priority, int policy) {
-    struct sched_param sp = { .sched_priority = priority };
-    int ret = sched_setscheduler(pid, policy, &sp);
-    // if (ret == -1) {
-    //     perror("sched_setscheduler");
-    //     exit (EXIT_FAILURE);
-    // }
-    switch (errno)
-    {
-    case EINVAL:
-        printf("The priority or policy isn't a valid value. \n");        break;
-    case EPERM:
-        printf("The calling process doesn't have sufficient privilege to set the priority. \n");        break; 
-    case ESRCH:
-        printf("The process pid doesn'\n");        break;
-    default:
-        printf("OK\n");
-    }
-}
+void set (int policy, int priority);
 
 int main(int argc, char *argv[]) {
-    printf("%d\n", getppid());
-    if (argc < 3) {
-        printf("no enough param\n");
+    
+    if (argc != 3) {
+        printf("Error! try different parametes\n");
         exit (EXIT_FAILURE);
     }
 
     int policy = atoi(argv[1]);
     int priority = atoi(argv[2]);
+    set(policy, priority);
 
-    set (0, priority, policy);
+    while(1) {
+        pid_t pid = getpid();
+        printf("%d \n", pid);        
+        sleep(10);
+    }
     
     exit(EXIT_SUCCESS);
  }
+
+void set (int policy, int priority){
+    struct sched_param sp = { .sched_priority = priority };
+    int ret = sched_setscheduler(0,policy , &sp);
+
+    if (ret == -1) {
+        perror("sched_setscheduler");
+        exit (EXIT_FAILURE);
+    } 
+}
+ 
