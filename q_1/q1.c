@@ -11,7 +11,7 @@ square(int x)                   /* 3. allocated in text section local symbol*/
     int result;                 /* 4. allocated in stack section*/
 
     result = x * x;
-    return result;              /* 5. How the return value is passed? */
+    return result;              /* 5. the value passed via register */
 }
 
 static void
@@ -32,7 +32,7 @@ main(int argc, char* argv[])    /* allocated in text section local symbol*/
 {
     static int key = 9973;      /* allocated in allocated in initialized data section, local symbol */
     static char mbuf[10240000]; /* allocated in allocated in uninitialized data section, local symbol*/
-    char* p;                    /* allocated in ???????stack section */
+    char* p;                    /* allocated in stack section */
 
 
     doCalc(key);
