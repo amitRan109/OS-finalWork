@@ -6,7 +6,7 @@
 #include<sys/wait.h> 
 #include<signal.h>
 
-void send_msg (pid_t pid, int sig_type , int count){
+void send_msg (pid_t pid, int sig_type , int count){ //send the signals
     switch (sig_type)
     {
     case 2:
@@ -28,7 +28,7 @@ void send_msg (pid_t pid, int sig_type , int count){
 }
 
 int main (int argc, char* argv[]){
-    if (argc < 4) printf ("error\n");
+    if (argc < 4) printf ("error: not enough arguments\n");
     else {
         pid_t serv_pid = atoi(argv[1]); 
         int sig_type = atoi(argv[2]); 
